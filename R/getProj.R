@@ -12,7 +12,7 @@
 #' 
 #' 
 
-getProj <- function(x, buffer=NULL, multiple=TRUE) {
+.getProj <- function(x, buffer=NULL, multiple=TRUE) {
     
     if (is.character(x)) {
         x <- brick(x)
