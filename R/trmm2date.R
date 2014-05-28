@@ -1,7 +1,7 @@
 
 #' Date parser for TRMM file names
 #' 
-#' @param x Character. A typical TRMM file name
+#' @param x Character or list of characters. A typical TRMM file name(s)
 #' 
 #' @return A date object
 #' @author Loic Dutrieux

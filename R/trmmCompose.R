@@ -1,7 +1,7 @@
 
 #' Compositing function for TRMM data
 #' 
-#' @description Creates composites that can be matched with each others from one year to the other. The same way that MODIS composites work. It differs from \code{\link{timeAggregate}} by the fact that aggregated periods can be matched among years. However, warning because the last composite of the year is likely to be truncated (particularly relevant in case of cumulative value composite, which is the default here)
+#' @description Creates composites that can be matched with each others from one year to the other. The same way that MODIS composites work. It differs from \code{\link{timeAggregate}} by the fact that aggregated periods can be matched between years. However, warning because the last composite of the year is likely to be truncated (particularly relevant in case of cumulative value composite, which is the default here)
 #' 
 #' @param x filename, rasterStack, rasterBrick, or list of rasterLayers (filenames)
 #' @param dates A date vector (See \code{\link{trmm2date}} to extract dates from trmm filenames)
@@ -9,7 +9,7 @@
 #' @param FUN The compositing function
 #' @param ... Arguments to be passed to \code{\link{writeRaster}}
 #' 
-#' @return An object of class spaceTime
+#' @return A RasterStack with time written to the z dimension
 #' @author Loic Dutrieux
 #' @import zoo
 #' @import raster
@@ -59,20 +59,11 @@ trmmCompose <- function(x, dates, by, FUN=sum, ...) {
     }
     
     out <- calc(x=x, fun=fun2, ...)
+    out <- setZ(out, dateOut)
     
-    if(hasArg(filename)) {
-        dots <- list(...)
-        time <- dateOut
-        extension(dots$filename) <- '.rda'
-        save(time, file=dots$filename)
+    if (hasArg(filename)) {
+        hdr(out, format='RASTER')
     }
-    
-    
-    
-    out <- list(data = out, 
-                time = dateOut)
-    
-    class(out) <- 'spaceTime'
     
     return(out)
     

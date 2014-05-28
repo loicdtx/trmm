@@ -18,26 +18,11 @@
 #' 
 #' 
 
-warpTrmm2Landsat <- function(target, trmm, filename, buffer=100000, multiple=TRUE, run=TRUE) {
-    
-    hasTime <- FALSE
-    if(!is.character(trmm)){
-        if(class(trmm) == 'spaceTime'){
-            time <- trmm$time
-            trmm <- trmm$data@file@name
-            hasTime <- TRUE
-        } else { # Assumed raster* object
-            trmm <- trmm@file@name
-            hasTime <- FALSE
-        }
-    }
-    
-    if(class(trmm) == 'spaceTime'){
-        trmm <- trmm$data@filename
-    }
+warpTrmm2Raster <- function(target, trmm, filename, buffer=100000, multiple=TRUE, run=TRUE) {
+
     
     res <- res(brick(trmm))[1] * 100000 # 100000 is for a rough conversion from degree to meters
-    ProjInfo <- getProj(x = target, buffer=buffer) #multiple=TRUE is implicit
+    ProjInfo <- .getProj(x = target, buffer=buffer) #multiple=TRUE is implicit
     if (multiple) {
         res <- round_any(res, ProjInfo$resolution)
     }
@@ -46,18 +31,7 @@ warpTrmm2Landsat <- function(target, trmm, filename, buffer=100000, multiple=TRU
     WarpString <- sprintf('gdalwarp %s %s -tr %d %d %s %s', te, srs, res, res, trmm, filename)
     if(run){
         system(WarpString)
-        if (hasTime) {
-            data <- brick(filename)
-            extension(filename) <- '.rda'
-            save(time, file=filename)
-            out <- list(data = data, 
-                        time = time)
-            
-            class(out) <- 'spaceTime'
-            return(out)
-        } else {
-            return(filename)
-        }
+        return(filename)
     }
     
     return(WarpString)

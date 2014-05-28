@@ -1,7 +1,7 @@
 
 #' Aggregation function for TRMM data
 #' 
-#' @description Aggregate TRMM data over time, using a defined function. Also see \code{\link{trmmCompose}} which does something different.
+#' @description Aggregate daily TRMM data over time, using a defined function. Also see \code{\link{trmmCompose}} which does something different.
 #' 
 #' @param x filename, rasterStack, rasterBrick, or list of rasterLayers (filenames)
 #' @param dates A date vector (See \code{\link{trmm2date}} to extract dates from trmm filenames)
@@ -9,7 +9,7 @@
 #' @param FUN The compositing function
 #' @param ... Arguments to be passed to \code{\link{writeRaster}}
 #' 
-#' @return An object of class spaceTime
+#' @return RasterStack with time written to the z dimention
 #' @author Loic Dutrieux
 #' @import zoo
 #' @import raster
@@ -38,20 +38,11 @@ timeAggregate <- function(x, dates, by, FUN=sum, ...) {
     }
     
     out <- calc(x=x, fun=fun2, ...)
+    out <- setZ(out, dateOut)
     
-    if(hasArg(filename)) {
-        dots <- list(...)
-        time <- dateOut
-        extension(dots$filename) <- '.rda'
-        save(time, file=dots$filename)
+    if (hasArg(filename)) {
+        hdr(out, format='RASTER')
     }
-    
-    
-    
-    out <- list(data = out, 
-                time = dateOut)
-    
-    class(out) <- 'spaceTime'
     
     return(out)
     
