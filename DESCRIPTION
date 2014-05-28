@@ -6,4 +6,11 @@ Date: 2014-05-28
 Author: Loïc Dutrieux
 Maintainer: <loic.dutrieux@gmail.com>
 Description: Includes functions to compute climate indices, and uses classes from the raster package.
+Depends:
+    R (>= 3.0.0),
+    raster,
+    lubridate,
+    zoo,
+    plyr,
+    stringr
 License: tbd
