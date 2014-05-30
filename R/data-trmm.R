@@ -9,3 +9,15 @@
 #' @examples
 #' daily
 NULL
+
+#' zoo time-series of daily rainfall
+#'
+#' zoo object of daily precipitation estimates from TRMM
+#'
+#' @docType data
+#' @name trmmDailyZoo
+#' @usage trmmDailyZoo
+#' @format A \code{\link{zoo}} object
+#' @examples
+#' trmmDailyZoo
+NULL

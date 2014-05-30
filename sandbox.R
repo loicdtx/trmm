@@ -7,7 +7,7 @@ head(wichita)
 
 # Build a TRMM dataset
 dir <- 'F:/RS/test/trmm/'
-list <- list.files(dir, pattern='^.*\\.(nc)', full.names=TRUE)
+list <- list.files(dir, pattern='^.*\\.nc', full.names=TRUE)
 stack <- stack(list)
 
 subStack <- crop(stack, e)
