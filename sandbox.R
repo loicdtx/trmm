@@ -24,5 +24,23 @@ fun <- function() {
     return(out)
 }
 
+# pattern for monthly merged satellite rain gauges product
+pattern='^.*3B43\\.\\d{8}\\.7A\\.(nc|hdf)'
+str_match(pattern='^.*(3B43\\.)(\\d{8})(\\.7A\\.(nc|hdf))', string=string)[,3]
 
-### Ongoing tests; results from a zoo objects and from a ts object look different... Why?
+# 3 products to be dowloaded from Mirador (subset possible on request, otherwise download is also possible via ftp)
+# 3B42 Daily
+    # 3B42_daily.2013.12.29.7.SUB.nc (bin|hdf)
+    # 3B42_daily.2013.12.29.7.nc (bin|hdf)
+pattern = '^.*3B42_daily\\.\\d{4}\\.\\d{2}\\.\\d{2}\\.7(\\.SUB|?)\\.(?i)(nc|bin|hdf)'
+# 3B42 (which is the 3 hourly)
+    # 3B42.20060228.15.7A.HDF
+pattern = '^.*3B42\\.\\d{8}\\.\\d{2}\\.7A(\\.SUB|?)\\.(?i)(nc|hdf)'
+# 3B43 (TRMM combined monthly)
+    # 3B43.20020601.7A.nc (hdf)?
+    # 3B43.20020601.7A.SUB.nc ??
+pattern = '^.*3B43\\.\\d{8}\\.7A(\\.SUB|?)\\.(?i)(nc|hdf)'
+
+
+
+
