@@ -27,6 +27,7 @@ RasterStack with time written to the z dimention
 Creates monthly composites from daily trmm data
 }
 \examples{
+data(dailyTRMM)
 monthly <- timeAggregateMonth(daily)
 }
 \author{

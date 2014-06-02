@@ -38,6 +38,7 @@ Compute spi from a rasterStack/Brick of monthly rainfall
 data
 }
 \examples{
+data(dailyTRMM)
 monthly <- timeAggregateMonth(daily)
 spiSpatial <- trmm2spi(monthly, scale=6)
 
