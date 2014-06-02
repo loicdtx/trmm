@@ -15,6 +15,7 @@
 #' @import raster
 #' 
 #' @examples
+#' data(dailyTRMM)
 #' monthly <- timeAggregateMonth(daily)
 #' 
 #' @export

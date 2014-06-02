@@ -19,5 +19,5 @@ NULL
 #' @usage trmmDailyZoo
 #' @format A \code{\link{zoo}} object
 #' @examples
-#' trmmDailyZoo
+#' data(trmmDailyZoo)
 NULL

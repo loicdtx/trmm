@@ -22,6 +22,7 @@
 #' @import SPEI
 #' 
 #' @examples
+#' data(dailyTRMM)
 #' monthly <- timeAggregateMonth(daily)
 #' spiSpatial <- trmm2spi(monthly, scale=6)
 #' 
