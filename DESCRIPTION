@@ -1,7 +1,7 @@
 Package: trmm
 Type: Package
 Title: Set of utilities to work with data from the Tropical Rainfall Measuring Mission (TRMM).
-Version: 0.1
+Version: 0.1.1
 Date: 2014-05-28
 Author: Loïc Dutrieux
 Maintainer: <loic.dutrieux@gmail.com>
