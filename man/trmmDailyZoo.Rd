@@ -10,6 +10,6 @@ trmmDailyZoo
 zoo object of daily precipitation estimates from TRMM
 }
 \examples{
-trmmDailyZoo
+data(trmmDailyZoo)
 }
 

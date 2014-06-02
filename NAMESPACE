@@ -1,5 +1,6 @@
 export(timeAggregate)
 export(timeAggregateMonth)
+export(timeStackTRMM)
 export(trmm2date)
 export(trmm2spi)
 export(trmmCompose)
