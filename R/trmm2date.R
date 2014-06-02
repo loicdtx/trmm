@@ -12,9 +12,9 @@
 #' @export
 
 trmm2date <- function(x) {
-    p3B42_daily <- '^.*(3B42_daily\\.)(\\d{4}\\.\\d{2}\\.\\d{2})\\.7(\\.SUB|?)\\.(?i)(nc|bin|hdf)'
-    p3B42 <- '^.*(3B42\\.)(\\d{8}\\.\\d{2})\\.7A(\\.SUB|?)\\.(?i)(nc|hdf)'
-    p3B43 <- '^.*(3B43\\.)(\\d{8})\\.7A(\\.SUB|?)\\.(?i)(nc|hdf)'
+    p3B42_daily <- '^.*(3B42_daily\\.)(\\d{4}\\.\\d{2}\\.\\d{2})\\.7(\\.SUB)?\\.(?i)(nc|bin|hdf)'
+    p3B42 <- '^.*(3B42\\.)(\\d{8}\\.\\d{2})\\.7A?(\\.SUB)?\\.(?i)(nc|hdf)'
+    p3B43 <- '^.*(3B43\\.)(\\d{8})\\.7A?(\\.SUB)?\\.(?i)(nc|hdf)'
     x <- basename(x)
     fun <- function(x){
         if(grepl(pattern=p3B42_daily, x)) {
