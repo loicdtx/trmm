@@ -30,7 +30,7 @@ str_match(pattern='^.*(3B43\\.)(\\d{8})(\\.7A\\.(nc|hdf))', string=string)[,3]
 
 # 3 products to be dowloaded from Mirador (subset possible on request, otherwise download is also possible via ftp)
 # 3B42 Daily
-    # 3B42_daily.2013.12.29.7.SUB.nc (bin|hdf)
+    # '3B42_daily.2013.12.29.7.SUB.nc' (bin|hdf)
     # 3B42_daily.2013.12.29.7.nc (bin|hdf)
 pattern = '^.*3B42_daily\\.\\d{4}\\.\\d{2}\\.\\d{2}\\.7(\\.SUB|?)\\.(?i)(nc|bin|hdf)'
 # 3B42 (which is the 3 hourly)
